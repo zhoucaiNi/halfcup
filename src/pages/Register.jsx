@@ -17,7 +17,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     // filler
     e.preventDefault();
-    const username = e.target[0].value;
+    const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
 
@@ -29,13 +29,13 @@ const Register = () => {
 
         // update res profile
         await updateProfile(res.user, {
-          username,
+          displayName,
         })
 
         // create a user 
         await setDoc(doc(db, "users", res.user.uid), {
           uid: res.user.uid,
-          username,
+          displayName,
           email,
         });
       }

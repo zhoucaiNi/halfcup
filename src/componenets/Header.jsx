@@ -6,8 +6,7 @@ const Header = () => {
   const navigate = useNavigate();
   return (
     <div className="header">
-
-      <span>
+      <span className='logo'>
         <Link className="logo" to="/">
           Ringdom
         </Link>
