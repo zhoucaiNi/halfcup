@@ -1,0 +1,154 @@
+$tan: #E1B166;
+$lightTan: #EDCC8B;
+$default: #FEF8F2;
+
+
+
+body {
+  background-color: $default;
+}
+
+
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .homeContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+
+    span {
+      font-size: 56px;
+    }
+
+    .logo {
+      font-style: none;
+
+    }
+
+    button {
+      border: none;
+      background-color: $lightTan;
+      width: 400px;
+      height: 60px;
+      font-size: 36px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+  }
+}
+
+.header {
+  padding-top: 10px;
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
+
+  .logo {
+    color: $tan;
+    font-size: 36px;
+    font-weight: bold;
+  }
+
+  .links {
+    display: flex;
+    gap: 10px;
+
+    button {
+      height: 50px;
+      width: 100px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .signup {
+      background-color: $lightTan;
+      border: none;
+    }
+
+    .login {
+      background-color: white;
+      border-color: black;
+    }
+  }
+}
+
+.authContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .formContainer {
+    background-color: $default;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    img {
+      width: 250px;
+    }
+
+    span {
+      font-size: 46px;
+
+    }
+
+
+    .formWrapper {
+      background-color: $lightTan;
+      padding: 20px 60px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 200px;
+
+      span {
+        font-size: 18px;
+      }
+
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        input {
+          padding: 15px;
+          border: none;
+          width: 250px;
+          border-bottom: 2px solid $tan;
+
+          &::placeholder {
+            color: rgb(175, 175, 175)
+          }
+        }
+
+        button {
+          background-color: $tan;
+          color: white;
+          padding: 10px;
+          font-weight: bold;
+          border: none;
+          cursor: pointer;
+        }
+      }
+
+      .link {
+        font-style: none;
+        color: black;
+      }
+
+
+    }
+
+  }
+}
