@@ -9,7 +9,7 @@ const Gamehistory = () => {
   return (
     <div className="gameHistory">
       <div className="title">
-        <span> Your games</span>
+        <span> Upcoming games</span>
       </div>
       <div className="gameList">
         <button onClick={() => { navigate("/creategame") }}> Create Game </button>

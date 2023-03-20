@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Games from "./pages/Games";
 import Leagues from "./pages/Leagues";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="signup" element={<Register />} />
           <Route path="games" element={<Games />} />
           <Route path="leagues" element={<Leagues />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
