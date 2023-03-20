@@ -2,8 +2,6 @@ $tan: #E1B166;
 $lightTan: #EDCC8B;
 $default: #FEF8F2;
 
-
-
 body {
   background-color: $default;
 }
@@ -13,6 +11,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .lore {
+    width: 80%;
+  }
 
   .homeContent {
     width: 100%;
@@ -193,5 +195,131 @@ body {
       border: none;
       cursor: pointer;
     }
+  }
+}
+
+.games {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  .gamesContainer {
+
+    display: flex;
+    flex-direction: row;
+    border: 3px solid #E1B166;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 80vh;
+    width: 50%;
+
+    .title {
+      background-color: #E1B166;
+      width: 100%;
+      padding: 10px;
+
+    }
+
+    .sidebar {
+      flex: 1;
+
+
+      .title {
+        background-color: #E1B166;
+        width: 100%;
+        padding: 10px;
+      }
+
+      .search {
+        background-color: #EBCD9E;
+        border-bottom: 1px solid gray;
+
+        .searchForm {
+          padding: 10px;
+
+          input {
+            background-color: transparent;
+            border: none;
+            color: rgb(0, 0, 0);
+            outline: none;
+            width: 100%;
+
+            &::placeholder {
+              color: rgb(61, 60, 60)
+            }
+          }
+
+        }
+      }
+
+      .suggestedUsers {
+        background-color: #EBCD9E;
+        padding: 10px;
+        height: calc(100% - 100px);
+      }
+    }
+
+    .gameHistory {
+      background-color: #F6E2C1;
+      flex: 2;
+
+      .title {
+        background-color: #F6E2C1;
+        width: 100%;
+        padding: 10px;
+      }
+
+      .gameList {
+        background-color: #F3C781;
+        overflow: scroll;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        height: calc(100% - 60px);
+
+        button {
+          width: 85%;
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+.game {
+  background-color: #F4EBDC;
+  border-radius: 10px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    width: 100%; // gap: 40px;
+    justify-content: space-evenly;
+    cursor: pointer;
+
+    .user {
+      display: flex;
+      flex-direction: column;
+
+      .circle {
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        border-radius: 25px;
+        background: rgb(127, 127, 123);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
   }
 }

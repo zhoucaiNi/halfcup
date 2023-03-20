@@ -1,11 +1,19 @@
 import React from 'react'
 import Usernav from '../componenets/Usernav'
+import Sidebar from "../componenets/Sidebar"
+import Gamehistory from '../componenets/Gamehistory'
+import "../style.scss";
 
 const Games = () => {
   return (
-    <div className='homeContainer'>
+    <div className='games'>
       <Usernav />
-      Games</div>
+      <div className="gamesContainer">
+        <Sidebar />
+        <Gamehistory />
+      </div>
+    </div>
+
   )
 }
 
