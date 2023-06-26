@@ -127,6 +127,8 @@ body {
   }
 }
 
+// LOGIN/SIGN UP PAGES
+
 .authContainer {
   display: flex;
   flex-direction: column;
@@ -198,6 +200,8 @@ body {
     }
   }
 }
+
+// USERNAV COMPONENT
 
 .navContainer {
   width: 100%;
@@ -311,6 +315,8 @@ body {
   }
 }
 
+// GAMES PAGE
+
 .games {
   display: flex;
   flex-direction: column;
@@ -326,6 +332,12 @@ body {
     overflow: hidden;
     height: 80vh;
     width: 50%;
+
+    @include mobile {
+      width: 95%;
+      flex-direction: column;
+      overflow: scroll;
+    }
 
     .title {
       background-color: #E1B166;
@@ -361,6 +373,32 @@ body {
             &::placeholder {
               color: rgb(61, 60, 60)
             }
+          }
+
+        }
+
+        :hover {
+          background-color: #dea54a;
+        }
+
+        .userChat {
+          // padding-left: 10px;
+          padding: 5px;
+          cursor: pointer;
+          display: flex;
+          flex-direction: row;
+          gap: 5px;
+
+
+          .circle {
+            width: 25px;
+            height: 25px;
+            background-color: gray;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: aliceblue;
           }
 
         }
@@ -402,6 +440,8 @@ body {
   }
 }
 
+// GAME COMPONENT
+
 .game {
   background-color: #F4EBDC;
   border-radius: 10px;
@@ -434,5 +474,83 @@ body {
       }
     }
 
+  }
+}
+
+// PROFILE PAGE
+
+.profileContainer {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .profileBox {
+    background-color: $lightTan;
+    border-radius: 10px;
+    padding: 15px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    .circle {
+      width: 50px;
+      height: 50px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+      background: rgb(127, 127, 123);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .winHistory {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: row;
+      background-color: white;
+      padding: 10px;
+      border-radius: 10px;
+      gap: 20px;
+
+      .trophy {
+        font-size: 50px;
+      }
+
+      .stats {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .number {
+          font-size: 22px;
+        }
+
+        .text {
+          font-size: 12px;
+          color: rgb(118, 116, 116);
+        }
+      }
+
+    }
+
+  }
+
+  .gameBox {
+    padding: 15px;
+    display: flex;
+    // background-color: #E1B166;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+
+    span {
+      align-self: baseline
+    }
   }
 }

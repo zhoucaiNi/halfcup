@@ -21,6 +21,9 @@ const Register = () => {
     const email = e.target[1].value;
     const password = e.target[2].value;
 
+    const friendList = []
+    const matchlist = []
+
     try {
       // create user
       const res = await createUserWithEmailAndPassword(auth, email, password)
@@ -37,7 +40,20 @@ const Register = () => {
           uid: res.user.uid,
           displayName,
           email,
+
         });
+
+        // create a userFriendlist
+        await setDoc(doc(db, "userFriends", res.user.uid), {
+          friends: friendList
+        });
+
+
+        // create a userMatch
+        await setDoc(doc(db, "usersMatches", res.user.uid), {
+          matches: matchlist
+        });
+
       }
 
     } catch (err) {
