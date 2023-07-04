@@ -20,6 +20,7 @@ const Register = () => {
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
+    const gamesWon = 0
 
     const friendList = []
     const matchlist = []
@@ -40,7 +41,7 @@ const Register = () => {
           uid: res.user.uid,
           displayName,
           email,
-
+          gamesWon
         });
 
         // create a userFriendlist

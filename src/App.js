@@ -16,7 +16,7 @@ function App() {
           <Route path="signup" element={<Register />} />
           <Route path="games" element={<Games />} />
           <Route path="leagues" element={<Leagues />} />
-          <Route path="profile" element={<Profile />} />
+          <Route path="profile/:id" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

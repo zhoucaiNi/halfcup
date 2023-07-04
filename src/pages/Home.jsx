@@ -20,9 +20,9 @@ export const Home = () => {
         <span> you're logged in {currentUser.displayName}</span>
 
         <div className="lore">
-          <p2>
+          <p>
             In a world where beer pong is more than just a game, a fellowship of players compete for special rings that grant them powers. Ring players must play one games a week, three games max, including matches against those who lost their rings. The ultimate goal is to win a 1v1 tournament, where the victor takes all the rings and becomes the Lord of the Rings.
-          </p2>
+          </p>
         </div>
         <img src={eye} alt=""></img>
         <button onClick={() => signOut(auth)}> logout</button>
