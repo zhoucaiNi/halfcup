@@ -39,52 +39,6 @@ const Search = () => {
 
     navigate(`/profile/:${user.uid}`)
 
-    // const combinedId = currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid;
-
-    // try {
-    //   const res = await getDoc(doc(db, "matches", combinedId));
-    //   const res2 = await getDoc(doc(db, "userMatches", currentUser.uid))
-    //   const res3 = await getDoc(doc(db, "userMatches", user.uid))
-    //   console.log("res3")
-    //   console.log(res3)
-    //   // console.log("wtf")
-    //   if (!res.exists()) {
-    //     // create user chats
-    //     console.log("create matches")
-    //     await setDoc(doc(db, "matches", combinedId), { messages: [] });
-
-    //     if (!res2.exists()) {
-    //       await setDoc(doc(db, "userMatches", currentUser.uid), {})
-    //     }
-
-    //     await updateDoc(doc(db, "userMatches", currentUser.uid), {
-    //       [combinedId + ".userInfo"]: {
-    //         uid: user.uid,
-    //         displayName: user.displayName,
-    //         // photoURL: user.photoURL,
-    //       },
-    //       [combinedId + ".date"]: serverTimestamp(),
-    //     })
-
-    //     // create user chat for the other user
-    //     if (!res3.exists()) {
-    //       await setDoc(doc(db, "userMatches", user.uid), {})
-    //     }
-
-    //     await updateDoc(doc(db, "userMatches", user.uid), {
-    //       [combinedId + ".userInfo"]: {
-    //         uid: currentUser.uid,
-    //         displayName: currentUser.displayName,
-    //         // photoURL: currentUser.photoURL,
-    //       },
-    //       [combinedId + ".date"]: serverTimestamp(),
-    //     })
-    //   }
-    // } catch (err) { console.log(err) }
-    // console.log(err)
-    // console.log("wtf")
-    // setUser(null);
-    // setUsername("");
   }
 
   return (

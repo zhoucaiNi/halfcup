@@ -331,7 +331,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     height: 80vh;
-    width: 50%;
+    width: 70%;
 
     @include mobile {
       width: 95%;
@@ -343,22 +343,31 @@ body {
       background-color: #E1B166;
       width: 100%;
       padding: 10px;
-
     }
 
     .sidebar {
       flex: 1;
 
+      @include mobile {
+        top: 0;
+        position: sticky;
+      }
 
       .title {
         background-color: #E1B166;
         width: 100%;
         padding: 10px;
+
       }
 
       .search {
         background-color: #EBCD9E;
         border-bottom: 1px solid gray;
+
+        @include mobile {
+          top: 0;
+          position: sticky;
+        }
 
         .searchForm {
           padding: 10px;
@@ -413,7 +422,7 @@ body {
 
     .gameHistory {
       background-color: #F6E2C1;
-      flex: 2;
+      flex: 5;
 
       .title {
         background-color: #F6E2C1;
@@ -551,6 +560,71 @@ body {
 
     span {
       align-self: baseline
+    }
+
+    .friendReqContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+
+      .friendReqBox {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .friendTitle {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 5px;
+
+          p {
+            color: rgb(106, 106, 103);
+          }
+
+          .circle {
+            width: 40px;
+            height: 40px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            background: rgb(127, 127, 123);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+
+        .friendReqButtons {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 5px;
+
+          button {
+            background-color: $tan;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+
+            &:hover {
+              background-color: rgb(235, 211, 166);
+            }
+          }
+
+
+
+
+
+        }
+      }
+
     }
   }
 }

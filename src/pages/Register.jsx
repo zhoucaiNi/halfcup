@@ -30,7 +30,6 @@ const Register = () => {
       const res = await createUserWithEmailAndPassword(auth, email, password)
 
       if (res) {
-
         // update res profile
         await updateProfile(res.user, {
           displayName,

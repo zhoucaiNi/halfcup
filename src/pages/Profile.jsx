@@ -1,41 +1,44 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Game from '../componenets/Game'
 import Usernav from '../componenets/Usernav'
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { doc, arrayUnion, collection, query, where, getDocs, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import "../style.scss"
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { AuthContext } from '../context/AuthContext'
 import { useParams } from 'react-router-dom';
+import FriendRequest from '../componenets/FriendRequest';
 
 const Profile = () => {
   const [err, setErr] = useState(false)
   const { currentUser } = useContext(AuthContext);
-  const [matchHistory, setMatchHistory] = useState([])
+  const [friendRequest, setFriendRequest] = useState(null)
   const [sameUser, setSameUser] = useState(false)
   const params = useParams();
   const userUID = params.id.substring(1)
-  if (userUID === currentUser.id) {
-    setSameUser(true)
-}
-
   const [user, setUser] = useState(null)
 
   useEffect(() => {
     getUser()
-
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params])
 
+  useEffect(() => {
+    if (userUID === currentUser.uid) {
+      setSameUser(true)
+      console.log(sameUser)
+    }
+  }, [userUID, currentUser, sameUser])
+
   const getUser = async () => {
     const q = query(collection(db, "users"), where("uid", "==", userUID))
-
     try {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        console.log(doc.data())
         setUser(doc.data())
+        if (userUID === currentUser.uid) {
+          setFriendRequest(doc.data().friendRequest)
+        }
       })
 
     } catch (err) {
@@ -44,19 +47,15 @@ const Profile = () => {
     }
   }
 
-  // const getMatches = async () => {
-  //   const q = query(collection(db, "userMatches"), where("uid", "==", currentUser.uid))
+  const handleAddFriend = async (e) => {
+    e.preventDefault()
+    // console.log("add friend")
+    // create a userFriendlist
+    await updateDoc(doc(db, "users", userUID), {
+      friendRequest: arrayUnion(currentUser.uid)
+    });
 
-  //   try {
-  //     const querySnapshot = await getDocs(q);
-  //     querySnapshot.forEach((doc) => {
-  //       // setMatchHistory(doc.data())
-  //       console.log(doc.data())
-  //     })
-  //   } catch (err) {
-  //     setErr(true)
-  //   }
-  // }
+  }
 
   return (
     <div className='homeContainer' >
@@ -74,10 +73,25 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        {sameUser &&
+        {!sameUser &&
           <div>
-            <button> Add Friend </button>
+            <button onClick={handleAddFriend}> Add Friend </button>
           </div>
+        }
+
+        {friendRequest &&
+
+          <div className="gameBox">
+            <span> Friend Request</span>
+            <div className='friendReqContainer'>
+              {
+                friendRequest.map((friend) => (
+                  <FriendRequest friend={friend} key={friend} currentUser={currentUser.uid} />
+                ))
+              }
+            </div>
+          </div>
+
         }
 
         <div className="gameBox">
