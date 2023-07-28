@@ -15,7 +15,7 @@ const Usernav = () => {
       <div className="usernav">
         <span>
           <Link className="logo" to="/">
-            Ringdom
+            Pingus
           </Link>
         </span>
 
@@ -35,7 +35,7 @@ const Usernav = () => {
       <nav id={
         isNavExpanded ? "mobileNavbar" : "hidden"
       }>
-        <NavLink className='gamesNav' to="/games" >Games</NavLink>
+        <NavLink className='gamesNav' to="/games" > Games</NavLink>
         <NavLink className='leagues' to="/leagues"> Leagues </NavLink>
         <NavLink className='rules' to="/"> Rules</NavLink>
         <NavLink className='profile' to={`/profile/:${currentUser.uid}`} >Profile</NavLink>

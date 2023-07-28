@@ -49,7 +49,6 @@ const Profile = () => {
 
   const handleAddFriend = async (e) => {
     e.preventDefault()
-    // console.log("add friend")
     // create a userFriendlist
     await updateDoc(doc(db, "users", userUID), {
       friendRequest: arrayUnion(currentUser.uid)
@@ -80,7 +79,6 @@ const Profile = () => {
         }
 
         {friendRequest &&
-
           <div className="gameBox">
             <span> Friend Request</span>
             <div className='friendReqContainer'>

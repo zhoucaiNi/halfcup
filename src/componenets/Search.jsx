@@ -36,7 +36,6 @@ const Search = () => {
 
   const handleSelect = async () => {
     // check whether the group (chat in firestore) exists if not create one
-
     navigate(`/profile/:${user.uid}`)
 
   }

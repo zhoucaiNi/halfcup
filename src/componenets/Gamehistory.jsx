@@ -4,7 +4,7 @@ import Game from './Game';
 import "../style.scss";
 
 const Gamehistory = () => {
-
+  
   const navigate = useNavigate();
   return (
     <div className="gameHistory">

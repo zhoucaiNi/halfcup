@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { doc, query, getDoc, where, FieldPath } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
-const SuggestedUsers = ({ friends }) => {
+const CurrentFriends = ({ friends }) => {
   // console.log(friends)
   const navigate = useNavigate();
   const [friendList, setFriendList] = useState(null);
@@ -37,14 +37,13 @@ const SuggestedUsers = ({ friends }) => {
     if (friends) {
       getFriends()
     }
-
-
   }, [friends])
 
+
   return (
-    <div className='suggestedUsers'>
-      <p> Suggested Users</p>
-      {friendList && friendList.map((friend, index) => (
+    <div className='currentFriends'>
+      <p> Current Friends</p>
+      {friendList && friendList.map((friend,index) => (
         <div className="friend" onClick={() => handleSelect(friend.uid)} key={index}>
           <div className="profileCircle"> {friend.displayName.substring(0, 1)} </div>
           <p>{friend.displayName}</p>
@@ -55,4 +54,4 @@ const SuggestedUsers = ({ friends }) => {
   )
 }
 
-export default SuggestedUsers
+export default CurrentFriends

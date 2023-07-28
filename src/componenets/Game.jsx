@@ -3,6 +3,7 @@ import pending from "../assets/pendingTable.svg"
 import "../style.scss"
 
 const Game = () => {
+
   return (
     <div className="game">
       <div className="wrapper">

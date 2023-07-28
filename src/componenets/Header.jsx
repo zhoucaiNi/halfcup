@@ -12,8 +12,10 @@ const Header = () => {
         </Link>
       </span>
       <div className="links">
+        <button className='login' onClick={() => { navigate("/leagues") }}> Leagues </button>
         <button className='signup' onClick={() => { navigate("/signup") }}>sign up </button>
         <button className='login' onClick={() => { navigate("/login") }}> log in </button>
+
       </div>
     </div>
   )

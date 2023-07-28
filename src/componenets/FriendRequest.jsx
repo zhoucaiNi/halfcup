@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { doc, collection, query, getDocs, where, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { db } from "../firebase";
 
+
 const FriendRequest = ({ friend, currentUser }) => {
 
   const [user, setUser] = useState(null)
   const [err, setErr] = useState(false)
+
   // console.log(currentUser)
 
   const handleAccept = async () => {
@@ -13,6 +15,10 @@ const FriendRequest = ({ friend, currentUser }) => {
     try {
       await updateDoc(doc(db, "userFriends", currentUser), {
         friends: arrayUnion(friend)
+      });
+
+      await updateDoc(doc(db, "userFriends", friend), {
+        friends: arrayUnion(currentUser)
       });
 
       console.log("friend added")

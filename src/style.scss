@@ -25,6 +25,19 @@ body {
 }
 
 
+.profileCircle {
+  width: 40px;
+  height: 40px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  background: rgb(127, 127, 123);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .homeContainer {
   display: flex;
   flex-direction: column;
@@ -347,6 +360,7 @@ body {
 
     .sidebar {
       flex: 1;
+      background-color: #EBCD9E;
 
       @include mobile {
         top: 0;
@@ -371,6 +385,7 @@ body {
 
         .searchForm {
           padding: 10px;
+
 
           input {
             background-color: transparent;
@@ -415,8 +430,58 @@ body {
 
       .suggestedUsers {
         background-color: #EBCD9E;
-        padding: 10px;
-        height: calc(100% - 100px);
+        // padding: 10px;
+        // height: calc(100% - 85px);
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        overflow: scroll;
+
+        p {
+          padding: 5px
+        }
+
+        .friend {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 5px;
+          width: 100%;
+          padding: 5px;
+
+          &:hover {
+            cursor: pointer;
+            background-color: #dea54a;
+          }
+        }
+      }
+
+      .currentFriends {
+        background-color: #EBCD9E;
+        // padding: 10px;
+        // height: calc(100% - 85px);
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        overflow: scroll;
+
+        p {
+          padding: 5px
+        }
+
+        .friend {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 5px;
+          width: 100%;
+          padding: 5px;
+
+          &:hover {
+            cursor: pointer;
+            background-color: #dea54a;
+          }
+        }
       }
     }
 
