@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Game from '../componenets/Game'
-import Usernav from '../componenets/Usernav'
 import { doc, arrayUnion, collection, query, where, getDocs, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import "../style.scss"
+import "../styles/style.scss"
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { AuthContext } from '../context/AuthContext'
 import { useParams } from 'react-router-dom';
@@ -58,7 +57,6 @@ const Profile = () => {
 
   return (
     <div className='homeContainer' >
-      <Usernav />
       {err && <span> Error </span>}
       <div className="profileContainer">
         <div className="profileBox">

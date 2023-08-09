@@ -1,0 +1,197 @@
+.createLeague {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .leagueCreateContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+
+
+    .bracketFormContainer {
+      flex: 1 0 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+
+    .bracketDisplay {
+      flex: 5 0 0;
+      // width: 100%;
+      // width: 500px;
+      // background-color: rgb(255, 255, 255);
+      display: flex;
+      flex-direction: column;
+      padding-left: 10px;
+      width: 100%;
+      align-items: flex-start;
+
+    }
+
+  }
+}
+
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+@import 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,700';
+
+$color-theme: #488bf4;
+$color-heading: #363636;
+$color-content: #858585;
+$color-background: #f0f2f2;
+$color-footer: black;
+$color-news: #4549a8;
+$color-community: #dc563f;
+$color-release: #60c645;
+$color-border: #c0c0c8;
+$font-content: "Roboto Slab", serif;
+$bracket-width: 14rem;
+$bracket-height: 3rem;
+
+.bracket {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  // background-color: rgb(60, 41, 41);
+  color: black;
+  margin: 5px;
+  width: 95%;
+  align-self: center;
+
+  .round {
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-around;
+    gap: 10px;
+    // background-color: #363636;
+    width: 100%;
+    height: 100%;
+
+    // display: inline-block;
+    // vertical-align: middle;
+    .title {
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-weight: 450;
+      border-radius: 5px;
+      align-self: center;
+      font-size: 1.25rem;
+      background-color: #cecece;
+      width: 100%;
+    }
+
+    .matchups {
+      position: relative;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      gap: 1px;
+      height: 100%;
+
+      // :hover {
+      //   background-color: #cecece;
+      // }
+
+
+
+      .bracketGame,
+      .finalBracketGame {
+        font-size: medium;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: center;
+        // margin-top: 10px;
+        width: 100%;
+        height: 100%;
+
+
+
+        .playerContainer {
+          display: flex;
+          flex-direction: column;
+          border-radius: 5px;
+          border: white solid 2px;
+          margin: 20px 0px 20px 0px;
+          padding: 5px;
+          background-color: white;
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+      }
+
+      .playerContainer {
+        // background-color: #4549a8;
+
+        &:hover {
+          // background-color: white;
+          border: #313131 solid 2px;
+          
+          // border-color: #;
+        }
+      }
+
+      .player {
+        padding: 0px;
+        // width: 100%;
+      }
+
+      .loser {
+        color: #dc563f
+      }
+
+      .winner {
+        color: #1cac1c;
+        font-weight: bold;
+      }
+    }
+
+
+    //  inspired by  https://jsfiddle.net/mndv5sqy/54/
+
+    .bracketGame:nth-child(odd)::after,
+    .bracketGame:nth-child(even)::after {
+      content: "";
+      width: 30px;
+      left: 100%;
+      position: absolute;
+      top: 15%;
+      bottom: 50%;
+      background:
+        linear-gradient(#9D9D9D, #9D9D9D) bottom left /50% 3px,
+        linear-gradient(#9D9D9D, #9D9D9D) center /3px 100%,
+        linear-gradient(#9D9D9D, #9D9D9D) top right /50% 3px;
+      background-repeat: no-repeat;
+    }
+
+    .bracketGame:nth-child(odd)::after {
+      top: 50%;
+      bottom: 0%;
+      transform: scaleX(-1);
+    }
+
+    .bracketGame:nth-child(even)::after {
+      top: 0%;
+      bottom: 50%;
+    }
+  }
+
+  // Additional styling for quarterfinals, semifinals, finals, champion...
+}

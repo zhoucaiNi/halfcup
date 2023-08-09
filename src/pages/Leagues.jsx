@@ -1,16 +1,14 @@
-import React, { useContext } from 'react'
-import Usernav from '../componenets/Usernav'
-import Header from '../componenets/Header'
-import { AuthContext } from '../context/AuthContext'
+import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 const Leagues = () => {
-
-  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   return (
     <div className='homeContainer'>
+      <h1> Tournament </h1>
+      <button className='createLeagues' onClick={() => { navigate("/createleague") }}>  Create League </button>
+      <span> Current Leagues</span>
 
-      {currentUser ? <Usernav /> : <Header />}
-      Leagues
 
     </div>
   )

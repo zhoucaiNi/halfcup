@@ -1,6 +1,6 @@
 import React from 'react'
 import pending from "../assets/pendingTable.svg"
-import "../style.scss"
+import "../styles/style.scss"
 
 const Game = () => {
 

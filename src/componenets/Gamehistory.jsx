@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Game from './Game';
-import "../style.scss";
+import "../styles/style.scss"
 
 const Gamehistory = () => {
   

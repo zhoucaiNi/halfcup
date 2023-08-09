@@ -26,9 +26,9 @@ const Sidebar = (props) => {
           console.log("Document does not exist")
         }
 
-      } catch (err) {
-        console.log(err)
+      } catch (error) {
         setErr(true)
+        console.log(err)
       }
     }
 
@@ -37,7 +37,7 @@ const Sidebar = (props) => {
       getFriends()
     }
 
-  }, [props.currentUID])
+  }, [err, props.currentUID])
 
   useEffect(() => {
     const getSuggestedUsers = async () => {
@@ -60,7 +60,7 @@ const Sidebar = (props) => {
       getSuggestedUsers()
     }
 
-  }, [userFriends]
+  }, [props.currentUID, userFriends]
   )
 
   return (

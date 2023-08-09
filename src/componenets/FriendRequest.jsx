@@ -22,7 +22,7 @@ const FriendRequest = ({ friend, currentUser }) => {
       });
 
       console.log("friend added")
-    } catch (err) {
+    } catch (error) {
       console.log(err)
       setErr(true)
     }

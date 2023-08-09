@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
-import "../style.scss"
+import "../styles/style.scss"
 import eye from "../assets/Eyeofpingus.svg"
-import Header from '../componenets/Header'
 import { AuthContext } from '../context/AuthContext'
 import { signOut } from 'firebase/auth'
 import { auth } from '../firebase'
-import Usernav from '../componenets/Usernav'
 import { useNavigate } from 'react-router-dom'
 
 export const Home = () => {
@@ -16,7 +14,7 @@ export const Home = () => {
   if (currentUser) {
     return (
       <div className='homeContainer'>
-        <Usernav />
+        {/* <Usernav /> */}
         <span> you're logged in {currentUser.displayName}</span>
 
         <div className="lore">
@@ -31,7 +29,7 @@ export const Home = () => {
   } else {
     return (
       <div className='homeContainer'>
-        <Header />
+        {/* <Header /> */}
 
         <div className="homeContent">
           <span> Fellowship of the Rings</span>

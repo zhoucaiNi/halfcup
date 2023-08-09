@@ -4,7 +4,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 // import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from "react-router-dom";
-import "../style.scss"
+import "../styles/style.scss"
 
 const Search = () => {
   const navigate = useNavigate();

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import "../style.scss";
+import "../styles/style.scss"
 import eye from "../assets/Eyeofpingus.svg"
 import { Link, useNavigate } from 'react-router-dom';
-import Header from '../componenets/Header';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth, db } from "../firebase";
 import { doc, setDoc } from 'firebase/firestore';
@@ -68,7 +67,6 @@ const Register = () => {
 
   return (
     <div className='authContainer'>
-      <Header />
       <div className="formContainer">
         <img src={eye} alt="logo" />
         <span> Get started!</span>
