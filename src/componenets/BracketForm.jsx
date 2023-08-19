@@ -42,7 +42,7 @@ const BracketForm = () => {
 
       <button type="button" onClick={handleAdd}>Add</button>
       <button type="button" onClick={handleSubtract}>Subtract</button>
-      <div>Current Count: {count}</div>
+      <div>Current Team Count: {count}</div>
 
       <input type="submit" value="Submit" />
     </form>

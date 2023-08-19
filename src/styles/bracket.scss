@@ -8,7 +8,6 @@
     width: 80%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     gap: 5px;
 
 
@@ -16,7 +15,7 @@
       flex: 1 0 0;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 5px;
 
       form {
@@ -67,21 +66,22 @@ $bracket-height: 3rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   gap: 30px;
   // background-color: rgb(60, 41, 41);
   color: black;
   margin: 5px;
-  width: 95%;
+  width: 100%;
+
   align-self: center;
 
   .round {
     display: flex;
     flex-direction: column;
-    // justify-content: space-around;
+    // align-items: flex-start;
     gap: 10px;
     // background-color: #363636;
-    width: 100%;
+    width: 20%;
     height: 100%;
 
     // display: inline-block;
@@ -135,6 +135,17 @@ $bracket-height: 3rem;
           background-color: white;
           box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         }
+
+
+      }
+
+      .pending {
+        visibility: hidden;
+
+        ::after {
+          visibility: hidden;
+        }
+
       }
 
       .playerContainer {
@@ -143,7 +154,7 @@ $bracket-height: 3rem;
         &:hover {
           // background-color: white;
           border: #313131 solid 2px;
-          
+
           // border-color: #;
         }
       }
@@ -151,6 +162,18 @@ $bracket-height: 3rem;
       .player {
         padding: 0px;
         // width: 100%;
+
+        .seed {
+          font-weight: bold;
+          text-align: end;
+          display: inline-block;
+          width: 20px;
+          padding-right: 10px;
+        }
+
+        .teamName {
+          // margin-left: 10px;
+        }
       }
 
       .loser {
@@ -161,6 +184,8 @@ $bracket-height: 3rem;
         color: #1cac1c;
         font-weight: bold;
       }
+
+
     }
 
 
@@ -176,7 +201,7 @@ $bracket-height: 3rem;
       bottom: 50%;
       background:
         linear-gradient(#9D9D9D, #9D9D9D) bottom left /50% 3px,
-        linear-gradient(#9D9D9D, #9D9D9D) center /3px 100%,
+        linear-gradient(#9d9d9d, #9D9D9D) center /3px 100%,
         linear-gradient(#9D9D9D, #9D9D9D) top right /50% 3px;
       background-repeat: no-repeat;
     }

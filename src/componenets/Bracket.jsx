@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Bracket = ({ tournament }) => {
-const roundLength= (Object.keys(tournament.matches).length);
+  const roundLength = (Object.keys(tournament.matches).length);
 
   return (
     <div className="bracket">
@@ -12,13 +12,14 @@ const roundLength= (Object.keys(tournament.matches).length);
             <div className="title">{`Round ${index + 1}`}</div>
             <div className="matchups">
               {roundMatches.map((match, matchIndex) => (
-                <div className={index === roundLength-1 ? 'finalBracketGame' : 'bracketGame'} key={matchIndex}>
-                  <div className="playerContainer">
+                <div className={`${index === roundLength - 1 ? 'finalBracketGame' : 'bracketGame'} ${match.state === "pending" ? 'pending' : ''}`} key={matchIndex}>
+                  <div className={`playerContainer`}>
                     {match.participants.map((participant, participantIndex) => {
                       const team = tournament.teams[participant.teamUID];
                       return (
                         <div className={`player ${participant.isWinner ? 'winner' : ''}`}>
-                          <span>{team ? team.teamName : 'TBD'}</span>
+                          <span className='seed' >{(tournament.teams[participant.teamUID].seed && tournament.teams[participant.teamUID].seed !== -9999) ? tournament.teams[participant.teamUID].seed : ""}</span>
+                          <span className='teamName'>{team ? team.teamName : 'TBD'}</span>
                         </div>
                       );
                     })}
