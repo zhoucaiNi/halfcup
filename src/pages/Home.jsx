@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import "../styles/style.scss"
-import eye from "../assets/Eyeofpingus.svg"
+import eye from "../assets/EyeofPingus2.svg"
 import { AuthContext } from '../context/AuthContext'
 import { signOut } from 'firebase/auth'
 import { auth } from '../firebase'
@@ -32,9 +32,9 @@ export const Home = () => {
         {/* <Header /> */}
 
         <div className="homeContent">
-          <span> Fellowship of the Rings</span>
+          <span> Got a tournament? </span>
           <img src={eye} alt=""></img>
-          <button onClick={()=> navigate("/signup")}> Get started!</button>
+          <button onClick={() => navigate("/signup")}> Get started!</button>
         </div>
       </div>
     )

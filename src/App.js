@@ -10,6 +10,7 @@ import Usernav from "./componenets/Usernav";
 import { AuthContext } from './context/AuthContext';
 import { useContext } from 'react';
 import Header from "./componenets/Header";
+import TournamentDetails from "./componenets/TournamentDetails";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -24,6 +25,7 @@ function App() {
           <Route path="signup" element={<Register />} />
           <Route path="games" element={<Games />} />
           <Route path="leagues" element={<Leagues />} />
+          <Route path="leagues/:id" element={<TournamentDetails />} />
           <Route path="createleague" element={<CreateLeague />} />
           <Route path="profile/:id" element={<Profile />} />
         </Route>

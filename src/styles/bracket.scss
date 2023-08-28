@@ -22,6 +22,42 @@
         display: flex;
         flex-direction: column;
         gap: 5px;
+
+
+        textarea {
+          resize: vertical;
+          height: 100px;
+        }
+      }
+
+      .participantPanel {
+        display: flex;
+        flex-direction: column;
+
+        .participantHeader {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          button {
+            width: 30px;
+          }
+        }
+
+        .participantList {
+          margin-top: 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          align-items: center;
+
+          .teamLabel {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+          }
+        }
       }
     }
 
@@ -34,8 +70,7 @@
       flex-direction: column;
       padding-left: 10px;
       width: 100%;
-      align-items: flex-start;
-
+      align-items: center;
     }
 
   }
@@ -62,13 +97,16 @@ $font-content: "Roboto Slab", serif;
 $bracket-width: 14rem;
 $bracket-height: 3rem;
 
+.tournamentName {
+  font-size: 24px;
+  font-weight: bold;
+}
+
 .bracket {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  // align-items: center;
   gap: 30px;
-  // background-color: rgb(60, 41, 41);
   color: black;
   margin: 5px;
   width: 100%;
@@ -78,14 +116,9 @@ $bracket-height: 3rem;
   .round {
     display: flex;
     flex-direction: column;
-    // align-items: flex-start;
     gap: 10px;
-    // background-color: #363636;
     width: 20%;
-    height: 100%;
 
-    // display: inline-block;
-    // vertical-align: middle;
     .title {
       text-align: center;
       padding-top: 10px;
@@ -94,7 +127,7 @@ $bracket-height: 3rem;
       border-radius: 5px;
       align-self: center;
       font-size: 1.25rem;
-      background-color: #cecece;
+      background-color: #E1B166;
       width: 100%;
     }
 
@@ -105,11 +138,6 @@ $bracket-height: 3rem;
       flex-direction: column;
       gap: 1px;
       height: 100%;
-
-      // :hover {
-      //   background-color: #cecece;
-      // }
-
 
 
       .bracketGame,
@@ -125,6 +153,7 @@ $bracket-height: 3rem;
 
 
 
+
         .playerContainer {
           display: flex;
           flex-direction: column;
@@ -134,6 +163,7 @@ $bracket-height: 3rem;
           padding: 5px;
           background-color: white;
           box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          cursor: pointer;
         }
 
 
@@ -219,4 +249,74 @@ $bracket-height: 3rem;
   }
 
   // Additional styling for quarterfinals, semifinals, finals, champion...
+}
+
+
+.reportHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-right: 10px;
+}
+
+.scoreReport {
+  border-radius: 2px;
+  padding: 5px;
+  border: 2px solid #313131;
+
+
+
+  .playerHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .leftHeader {
+      width: 75px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 5px;
+    }
+
+    .rightHeader {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      margin-right: 12px;
+
+      .check {
+        cursor: pointer;
+      }
+
+      .winner {
+        color: #1cac1c;
+      }
+
+      .scoreBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 50px;
+        height: 100%;
+
+        .scoreInput {
+          width: 25px;
+          height: calc(100% - 25px);
+        }
+
+        .counters {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+
+
+  }
+
+  // background-color: #1cac1c;
 }

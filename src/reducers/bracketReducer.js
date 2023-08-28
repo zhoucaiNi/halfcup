@@ -1,12 +1,15 @@
 import { produce, current } from 'immer';
 import { ActionTypes } from '../actions';
+import { collection, query, doc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const initialState = {
-  name: "",
+  name: "Untitled Bracket",
   type: 1,
   mode: 0,
   count: 4,
   admin: "uid",
+  description: "ping ping ping",
   participants: {
   },
   teams: {
@@ -20,8 +23,8 @@ const initialState = {
   matches: {
     98: [
       {
-        matchUID: "matchUID",
-        nextMatch: "matchUID2",
+        matchUID: "matchUID2",
+        nextMatch: "matchUID3",
         name: "matchName",
         state: "current",
         participants: [
@@ -30,8 +33,8 @@ const initialState = {
         ],
       },
       {
-        matchUID: "matchUID",
-        nextMatch: "matchUID2",
+        matchUID: "matchUID1",
+        nextMatch: "matchUID3",
         name: "matchName",
         state: "current",
         participants: [
@@ -42,9 +45,9 @@ const initialState = {
     ],
     99: [
       {
-        matchUID: "matchUID2",
-        nextMatch: "matchUID3",
-        name: "matchName",
+        matchUID: "matchUID3",
+        nextMatch: "null",
+        name: "Final",
         state: "current",
         participants: [
           { teamUID: "TBD", isWinner: false },
@@ -58,6 +61,12 @@ const initialState = {
 
 const BracketReducer = produce((draftState, action = {}) => {
   switch (action.type) {
+    case ActionTypes.UPDATE_WHOLE_BRACKET:
+      Object.keys(action.payload).forEach(key => {
+        draftState[key] = action.payload[key];
+      });
+      console.log(draftState)
+      break;
     case ActionTypes.INCREMENT:
       draftState.count += 1;
       const placeholderKey = `TBD${draftState.count}`;
@@ -188,7 +197,18 @@ const BracketReducer = produce((draftState, action = {}) => {
       }
       break;
     case ActionTypes.UPDATE_NAME:
-      draftState.name = action.payload;
+      if (action.payload.length === 0) {
+        draftState.name = "Untitled Bracket";
+      } else {
+        draftState.name = action.payload;
+      }
+      break;
+    case ActionTypes.UPDATE_DESCRIPTION:
+      if (action.payload.length === 0) {
+        draftState.description = "ping ping ping";
+      } else {
+        draftState.description = action.payload;
+      }
       break;
     case ActionTypes.UPDATE_TYPE:
       console.log(action.payload)
@@ -197,10 +217,72 @@ const BracketReducer = produce((draftState, action = {}) => {
     case ActionTypes.UPDATE_MODE:
       draftState.mode = action.payload;
       break;
+    case ActionTypes.UPDATE_TEAM_NAME:
+      const { teamName, teamUID } = action.payload;
+      draftState.teams[teamUID].teamName = teamName;
+      break;
+    case ActionTypes.UPDATE_WINNER:
+
+      const { roundIndex: rI, matchIndex: mI, participantIndex: pI } = action.payload;
+
+      draftState.matches[rI][mI].participants[pI].isWinner = true;
+      draftState.matches[rI][mI].participants[1 - pI].isWinner = false;
+
+      let nextRoundIndex = parseInt(rI) + 1;
+      let nextMatchIndex = Math.floor(mI / 2);
+
+      // Check if the match exists (it might not, if this is the final round)
+      if (draftState.matches[nextRoundIndex] && draftState.matches[nextRoundIndex][nextMatchIndex]) {
+        const nextParticipantIndex = mI % 2 === 0 ? 0 : 1;
+        const nextMatchUID = draftState.matches[nextRoundIndex][nextMatchIndex].participants[nextParticipantIndex].teamUID
+        if (nextMatchUID === "TBD" || nextMatchUID === draftState.matches[rI][mI].participants[pI].teamUID) {
+          // Determine which participant slot the winner should occupy in the next match.
+          // Assuming winners of even-indexed matches go to the first slot and 
+          // winners of odd-indexed matches go to the second slot.
+          const nextParticipantIndex = mI % 2 === 0 ? 0 : 1;
+          // Set the winner in the next match
+          draftState.matches[nextRoundIndex][nextMatchIndex].participants[nextParticipantIndex].teamUID = draftState.matches[rI][mI].participants[pI].teamUID;
+        } else {
+          const nextParticipantIndex = mI % 2;
+          // Set the winner in the next match
+          draftState.matches[nextRoundIndex][nextMatchIndex].participants[0].isWinner = false;
+          draftState.matches[nextRoundIndex][nextMatchIndex].participants[1].isWinner = false;
+          draftState.matches[nextRoundIndex][nextMatchIndex].participants[nextParticipantIndex].teamUID = draftState.matches[rI][mI].participants[pI].teamUID;
+          console.log(nextRoundIndex, nextMatchIndex)
+          while (draftState.matches[nextRoundIndex + 1] && draftState.matches[nextRoundIndex + 1][Math.floor(nextMatchIndex / 2)]) {
+            nextRoundIndex = nextRoundIndex + 1;
+            const nextParticipantIndex = nextMatchIndex % 2;
+            nextMatchIndex = Math.floor(nextMatchIndex / 2);
+
+            console.log("inside the loop", nextRoundIndex, nextMatchIndex, nextParticipantIndex)
+
+            // console.log(nextRoundIndex, nextMatchIndex, nextParticipantIndex)
+            draftState.matches[nextRoundIndex][nextMatchIndex].participants[0].isWinner = false;
+            draftState.matches[nextRoundIndex][nextMatchIndex].participants[1].isWinner = false;
+            draftState.matches[nextRoundIndex][nextMatchIndex].participants[nextParticipantIndex].teamUID = 'TBD'
+          }
+        }
+      }
+      console.log(current(draftState))
+      break;
+    case ActionTypes.UPDATE_FIREBASE:
+      console.log(action.payload)
+      const { tournamentUID, tournament } = action.payload
+
+      break;
+    case ActionTypes.RESET_INITIAL_STATE:
+      console.log("bruh")
+      console.log(initialState)
+      return initialState;
+    // break;
     default:
       console.log("default")
       return draftState;
   }
+}, initialState);
+
+
+const BracketMakerReducer = produce((draftState, action = {}) => {
 }, initialState);
 
 export default BracketReducer;

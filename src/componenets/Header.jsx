@@ -8,7 +8,7 @@ const Header = () => {
     <div className="header">
       <span className='logo'>
         <Link className="logo" to="/">
-          Ringdom
+          Pingus
         </Link>
       </span>
       <div className="links">
